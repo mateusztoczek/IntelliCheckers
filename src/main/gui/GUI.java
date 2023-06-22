@@ -308,20 +308,19 @@ public class GUI extends JFrame {
                 });
         // initialize components
         JMenuBar menuBar = new JMenuBar();
-        JMenu fileMenu = new JMenu("File");
+        JMenu gameMenu = new JMenu("Game");
         JMenuItem restartItem = new JMenuItem("Restart");
         JMenuItem quitItem = new JMenuItem("Quit");
-        JMenu editMenu = new JMenu("Edit");
+        JMenu moveMenu = new JMenu("Move");
         JMenuItem undoItem = new JMenuItem("Undo");
-        JMenu viewMenu = new JMenu("View");
-        JRadioButtonMenuItem viewItemHelpMode = new JRadioButtonMenuItem("Help mode");
-        JRadioButtonMenuItem viewItemHintMode = new JRadioButtonMenuItem("Hint mode");
+        JRadioButtonMenuItem viewItemHelpMode = new JRadioButtonMenuItem("Assisted mode");
+        JRadioButtonMenuItem viewItemHintMode = new JRadioButtonMenuItem("Show hints");
         viewItemHelpMode.setSelected(main.gui.Settings.helpMode);
         viewItemHintMode.setSelected(main.gui.Settings.hintMode);
         JMenu helpMenu = new JMenu("Help");
         JMenuItem rulesItem = new JMenuItem("Game Rules");
-        JMenuItem helpItemHint = new JMenuItem("Hint!");
-        JMenuItem helpItemMovables = new JMenuItem("Show movable pieces");
+        JMenuItem helpItemHint = new JMenuItem("Next hint");
+        JMenuItem helpItemMovables = new JMenuItem("Possible moves");
 
         // add action listeners
         quitItem.addActionListener(new ActionListener() {
@@ -374,17 +373,16 @@ public class GUI extends JFrame {
         });
 
         // add components to menu bar
-        fileMenu.add(restartItem);
-        fileMenu.add(quitItem);
-        editMenu.add(undoItem);
-        viewMenu.add(viewItemHelpMode);
-        viewMenu.add(viewItemHintMode);
-        helpMenu.add(helpItemHint);
-        helpMenu.add(helpItemMovables);
+        gameMenu.add(restartItem);
+        gameMenu.add(quitItem);
+        moveMenu.add(undoItem);
+        moveMenu.add(helpItemHint);
+        moveMenu.add(helpItemMovables);
+        helpMenu.add(viewItemHelpMode);
+        helpMenu.add(viewItemHintMode);
         helpMenu.add(rulesItem);
-        menuBar.add(fileMenu);
-        menuBar.add(editMenu);
-        menuBar.add(viewMenu);
+        menuBar.add(gameMenu);
+        menuBar.add(moveMenu);
         menuBar.add(helpMenu);
         this.setJMenuBar(menuBar);
     }
