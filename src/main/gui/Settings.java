@@ -29,7 +29,6 @@ public class Settings{
             result = Settings.AIcolour.getOpposite();
         }
         if(result == null){
-            GUI.updateLog("ERROR","Null player has no piece.");
             throw new RuntimeException("Null player has no piece.");
         }
         return result;

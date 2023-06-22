@@ -15,7 +15,6 @@ public enum Player {
             result = AI;
         }
         if (result == null){
-            GUI.updateLog("ERROR","Null player has no opposite.");
             throw new RuntimeException("Null player has no opposite.");
         }
         return result;

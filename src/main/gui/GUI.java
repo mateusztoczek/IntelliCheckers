@@ -419,11 +419,21 @@ public class GUI extends JFrame {
     private void onHelpModeClick() {
         main.gui.Settings.helpMode = !main.gui.Settings.helpMode;
         System.out.println("help mode: " + main.gui.Settings.helpMode);
+        if (main.gui.Settings.helpMode) {
+            updateLog("INFO", "HELP ON");
+        } else {
+            updateLog("INFO", "HELP OFF");
+        }
     }
 
     private void onHintModeClick() {
         main.gui.Settings.hintMode = !main.gui.Settings.hintMode;
         System.out.println("hint mode: " + main.gui.Settings.hintMode);
+        if (main.gui.Settings.hintMode) {
+            updateLog("INFO", "HINTS ON");
+        } else {
+            updateLog("INFO", "HINTS OFF");
+        }
         onHintClick();
     }
 
@@ -440,7 +450,6 @@ public class GUI extends JFrame {
                 possibleMoves = game.getValidMoves(pos);
                 if (possibleMoves.size() == 0) {
                     MoveFeedback feedback = game.moveFeedbackClick(pos);
-                    updateLog("INFO", feedback.toString());
                     if (feedback == MoveFeedback.FORCED_JUMP) {
                         // show movable jump pieces
                         onHelpMovablesClick();
@@ -457,7 +466,7 @@ public class GUI extends JFrame {
      * @param actionEvent
      */
     private void onGhostButtonClick(ActionEvent actionEvent) {
-        updateLog("MOVE", "HUMAN");
+        updateLog("MOVE", "PLAYER");
         if (!game.isGameOver() && game.getTurn() == Player.HUMAN) {
             hintMove = null;
             helpMoves = null;
@@ -478,6 +487,7 @@ public class GUI extends JFrame {
     }
 
     private void gameOver() {
+        updateLog("INFO", "GAME OVER");
         JOptionPane.showMessageDialog(this,
                 game.getGameOverMessage(),
                 "",
@@ -597,6 +607,7 @@ public class GUI extends JFrame {
      */
     private void onUndoClick() {
         game.undo();
+        updateLog("INFO", "MOVE REVOKED");
         updateCheckerBoard();
         if (main.gui.Settings.hintMode) {
             onHintClick();

@@ -79,7 +79,6 @@ public class BoardState {
             case 2:
                 return heuristic2(player);
         }
-        GUI.updateLog("ERROR","Invalid heuristic.");
         throw new RuntimeException("Invalid heuristic");
     }
 
@@ -192,7 +191,6 @@ public class BoardState {
      */
     public ArrayList<BoardState> getSuccessors(int position, boolean jump){
         if (this.getPiece(position).getPlayer() != turn){
-            GUI.updateLog("ERROR","No such piece at that position.");
             throw new IllegalArgumentException("No such piece at that position");
         }
         Piece piece = this.state[position];

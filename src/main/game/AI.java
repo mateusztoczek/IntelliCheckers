@@ -28,7 +28,6 @@ public class AI {
             return minimaxMove(successors);
         }
         else{
-            GUI.updateLog("ERROR", "Cannot generate moves for player if it's not their turn");
             throw new RuntimeException("Cannot generate moves for player if it's not their turn");
         }
     }
@@ -68,7 +67,6 @@ public class AI {
      */
     private BoardState randomMove(ArrayList<BoardState> successors){
         if (successors.size() < 1){
-            GUI.updateLog("ERROR","Can't randomly choose from empty list.");
             throw new RuntimeException("Can't randomly choose from empty list.");
         }
         Random rand = new Random();
@@ -132,7 +130,6 @@ public class AI {
             }
             return v;
         }
-        GUI.updateLog("ERROR", "Error in minimax algorithm");
         throw new RuntimeException("Error in minimax algorithm");
     }
 }
