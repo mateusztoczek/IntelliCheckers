@@ -161,6 +161,8 @@ public class GUI extends JFrame {
 
         updateCheckerBoard();
         this.pack();
+        this.setResizable(false);
+        this.setTitle("IntelliCheckers");
         this.setVisible(true);
         if (Settings.FIRSTMOVE == Player.AI) {
             aiMove();
